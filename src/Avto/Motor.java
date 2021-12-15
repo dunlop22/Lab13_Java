@@ -29,6 +29,13 @@ class Motor implements KWT {
             }
         }
 
+    
+    public double Vsego(Motor Motorik)
+    {
+        return (this.koni + Motorik.koni);  
+    }
+    
+    
     public double KWT()	//вывод текущей мощности (в квтч)
     {
         return (this.koni / 1.3596);

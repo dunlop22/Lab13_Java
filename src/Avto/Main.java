@@ -10,6 +10,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
+    public static class Summa<T extends Motor>
+    {
+        public Summa()
+        {
+        }
+        public double Sum(T t1, T t2)
+        {
+            return (t1.Vsego(t2));
+        }
+    }
+    
+    
     public static class Sravnenie<T extends Koleso>
     {
         public Sravnenie()
@@ -74,7 +86,7 @@ public class Main {
         Scanner in = new Scanner(System.in);        //инициализация сканера
         do
 	{
-            System.out.println("1) Общее\n2) Двигатель\n3) Коробка\n4) Колеса\n5) Автомобиль\n6) Сравнение (Шаблон)\n7) Конструктор производного класса с параметрами вызова конструктора базового класса\n8) Абстрактный класс\n9) Интерфейс\n0) Копирование");
+            System.out.println("1) Общее\n2) Двигатель\n3) Коробка\n4) Колеса\n5) Автомобиль\n6) Сравнение (Шаблон)\n7) Сумма (Шаблон)\n8) Абстрактный класс\n9) Интерфейс\n0) Копирование");
             main_key = in1.nextInt();
             switch (main_key) {
                 case 1:
@@ -313,9 +325,23 @@ public class Main {
                     break;
                 case 7:
                     key = 9;
+                    
+                    /*Лабораторная работа 13*/
+                    Motor mot1 = new Motor();
+                    Motor mot2 = new Motor();
+                    mot1.new_motor("2GR-FE", 249, 4, 10, 6, 3.5);
+                    mot2.new_motor("FB20", 150, 4, 8, 4, 2.0);
+                    
+                    Summa<Motor> Vsego = new Summa<Motor>();
+                    System.out.println("\n\nДвигатель №1:\n");
+                    mot1.prosmotr_motor();
+                    System.out.println("\n\nДвигатель №2:\n");
+                    mot2.prosmotr_motor();
+                    System.out.print("\n\nОбщее количество лошадиных сил у 2-х двигателей: " + Vsego.Sum(mot1, mot2) + "\n\n");
                     /*Лабораторная работа 12*/
+                    /*
                     Koleso_Zapaska Zapaska2 = new Koleso_Zapaska(235, 55, 17, "Литье", "Полноразмерное");
-                    Zapaska2.print();
+                    Zapaska2.print();*/
                     /*
                     Koleso Kol_mass[] = new Koleso[10];
                     Koleso temp = new Koleso();
