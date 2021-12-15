@@ -10,11 +10,34 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
-
-    
-    
-    
-    
+    public static class Sravnenie<T extends Koleso>
+    {
+        public Sravnenie()
+        {
+        }
+        public int Bolshe(T t1, T t2)
+        {
+            if (t1.okrujnost() > t2.okrujnost())
+            {
+                return 1;
+            }
+            else
+            {
+                return 0;
+            }
+        }
+        public int Menshe(T t1, T t2)
+        {
+            if (t1.okrujnost() < t2.okrujnost())
+            {
+                return 1;
+            }
+            else
+            {
+                return 0;
+            }
+        }
+    }
     
     public static void table_print(Koleso [][]Kol_Massiv)
     {
@@ -51,7 +74,7 @@ public class Main {
         Scanner in = new Scanner(System.in);        //инициализация сканера
         do
 	{
-            System.out.println("1) Общее\n2) Двигатель\n3) Коробка\n4) Колеса\n5) Автомобиль\n6) \n7) Конструктор производного класса с параметрами вызова конструктора базового класса\n8) Абстрактный класс\n9) Интерфейс\n0) Копирование");
+            System.out.println("1) Общее\n2) Двигатель\n3) Коробка\n4) Колеса\n5) Автомобиль\n6) Сравнение (Шаблон)\n7) Конструктор производного класса с параметрами вызова конструктора базового класса\n8) Абстрактный класс\n9) Интерфейс\n0) Копирование");
             main_key = in1.nextInt();
             switch (main_key) {
                 case 1:
@@ -199,6 +222,40 @@ public class Main {
                     break;
                 case 6:
                     key = 9;
+                    /*Лабораторная работа 13*/
+                    Koleso kol3 = new Koleso();
+                    Koleso kol4 = new Koleso();
+                    
+                    
+                    kol3.new_koleso(265, 18, 55, "Литье");
+                    kol4.new_koleso(185, 13, 65, "Ковка");
+                    
+                    System.out.println("Двигатель №1:");
+                    kol3.prosmotr_koleso();
+                    System.out.println("\n\nДвигатель №2:");
+                    kol4.prosmotr_koleso();
+                    
+                    Sravnenie<Koleso> Sravni = new Sravnenie<Koleso>();
+                    System.out.println("\n\n\nКолесо с большей окружностью:\n");
+                    if (Sravni.Bolshe(kol3, kol4) == 1)
+                    {
+                        kol3.prosmotr_koleso();
+                    }
+                    else
+                    {
+                        kol4.prosmotr_koleso();
+                    }
+                    System.out.println("\n\n\nКолесо с меньшей окружностью:\n");
+                    if (Sravni.Menshe(kol3, kol4) == 1)
+                    {
+                        kol3.prosmotr_koleso();
+                    }
+                    else
+                    {
+                        kol4.prosmotr_koleso();
+                    }
+                    
+                    /*
                     Koleso_Zapaska Zapaska1 = new Koleso_Zapaska();
                     Koleso Kol2 = new Koleso();
                     Kol2.new_koleso(265, 21, 35, "Литье");
@@ -217,6 +274,7 @@ public class Main {
                     System.out.println();
                     Zapaska1.print();
                     System.out.println();
+                    */
                     /*
                     Koleso kol1 = new Koleso();
                     Koleso kol2 = new Koleso(12);
@@ -385,7 +443,7 @@ public class Main {
                 case 0:
                     key = 9;
                     /*Лабораторная работа 12*/
-                    Koleso kol1 = new Koleso();
+                    /*Koleso kol1 = new Koleso();
                     Koleso kol2 = new Koleso();
                     Koleso kol3 = new Koleso();
                     Koleso kol4 = new Koleso();
@@ -417,6 +475,7 @@ public class Main {
                     System.out.println();
                     kol4.prosmotr_koleso();
                     System.out.println();
+                    */
                     break;
             }
         } while (true);

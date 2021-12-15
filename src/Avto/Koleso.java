@@ -7,6 +7,10 @@ import java.util.Scanner;
 class Koleso extends Koleso_inf implements Cloneable{
     
     
+public double okrujnost()
+    {
+        return (this.diametr * 25.4 + this.visota / 100 * this.shirina);
+    }
     
     public Object clone()
     {
